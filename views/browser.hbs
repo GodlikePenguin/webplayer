@@ -22,9 +22,20 @@
         current.classList.toggle('active');
         document.getElementById(nextId).classList.toggle('active');
     });
+    socket.on('left press', function() {
+        window.history.back();
+    });
+    socket.on('select press', function() {
+        var current = document.getElementsByClassName('active')[0];
+        var currentLink = current.href;
+        window.location = currentLink;
+    });
 </script>
 <style>
     .active {
         font-weight: bold;
+    }
+    a {
+        display: block;
     }
 </style>

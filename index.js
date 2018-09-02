@@ -20,8 +20,9 @@ app.set('view engine', 'hbs');
 
 //Setup routes
 app.get('/', splash);
-app.get('/browser', browser.browser);
+app.get('/browser*', browser.browser);
 app.get('/remote', remote.remote);
+app.use(express.static('./public'));
 
 //Home page
 function splash(req, res) {
@@ -36,6 +37,12 @@ io.on('connection', function (socket) {
     });
     socket.on('down press', function() {
         io.emit('down press');
+    });
+    socket.on('select press', function() {
+        io.emit('select press');
+    });
+    socket.on('left press', function() {
+        io.emit('left press');
     });
     socket.on('disconnect', function() {
         console.log('a user disconnected')

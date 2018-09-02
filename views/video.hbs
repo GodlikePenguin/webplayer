@@ -1,0 +1,24 @@
+<video autoplay>
+    <source src="{{src}}" type="video/mp4">
+    oops can't load video
+</video>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background: black;
+    }
+    video {
+        width: 100%;
+    }
+</style>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+    socket.on('left press', function() {
+        window.history.back();
+    });
+</script>
