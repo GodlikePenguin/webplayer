@@ -1,0 +1,39 @@
+<div id="controls">
+    <div class="flex">
+        <button id="up">&#9651;</button>
+    </div>
+    <div class="flex">
+        <button id="left">&#9665;</button>
+        <button id="select">&#9673;</button>
+        <button id="right">&#9655;</button>
+    </div>
+    <div class="flex">
+        <button id="down">&#9661;</button>
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+    document.getElementById('up').addEventListener('click', function () {
+        socket.emit('up press');
+    });
+    document.getElementById('down').addEventListener('click', function () {
+        socket.emit('down press');
+    });
+</script>
+
+<style>
+    #controls {
+        width: 100%;
+    }
+    .flex {
+        display: flex;
+        justify-content: center;
+    }
+    button {
+        height: 300px;
+        width: 33%;
+        font-size: 400%;
+    }
+</style>
