@@ -10,5 +10,5 @@ A web server which serves local files akin to a media player, and includes an al
 
 ---
 **Docker**:
-- Run the command `docker run --rm -e "WEBPLAYER_ROOT=<location of media inside container" -e "DISPLAY_IP_ADDR=<ip addr of host machine>" -v "<local media location>:<location of media inside container>" -p 3000:3000 edwarddobson/webplayer:0.1.0
+- Run the command `docker run --rm -e "WEBPLAYER_ROOT=<location of media inside container" -e "DISPLAY_IP_ADDR=<ip addr of host machine>" -v "<local media location>:<location of media inside container>" -p 3000:3000 edwarddobson/webplayer:0.1.0`
     - Note that the second half of the `-v` option must be the same as the WEBPLAYER_ROOT environment variable
