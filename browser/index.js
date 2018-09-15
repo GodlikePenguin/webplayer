@@ -13,6 +13,7 @@ function browser(req, res) {
 
     if (fs.lstatSync(fullPath).isDirectory()) {
         let returnedFiles = [];
+
         let files = fs.readdirSync(fullPath);
         for (let i = 0; i < files.length; i++) {
             returnedFiles.push({
@@ -20,7 +21,7 @@ function browser(req, res) {
                 path: req.url + '/' + files[i]
             })
         }
-        return res.render('browser', {title: 'browser', file: returnedFiles})
+        return res.render('browser', {title: 'browser', file: returnedFiles, ip: process.env.DISPLAY_IP_ADDR})
     } else {
         return res.render('video', {src:  '/' + path})
     }

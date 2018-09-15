@@ -1,5 +1,6 @@
+<div class="ip-addr">Running on {{ ip }}</div>
 {{#each file}}
-    <a href="{{this.path}}" id="{{@index}}" class="{{#if @first}}active{{/if}}">{{this.name}}</a>
+    <a href="{{this.path}}" id="{{@index}}" class="{{#if @first}}active {{/if}}file-item">{{this.name}}</a>
 {{else}}
     <h2>No files</h2>
 {{/each}}
@@ -13,6 +14,7 @@
         var nextId = (currentId - 1 + {{file.length}}) % {{file.length}};
         current.classList.toggle('active');
         document.getElementById(nextId).classList.toggle('active');
+        document.getElementById(nextId).scrollIntoView();
 
     });
     socket.on('down press', function() {
@@ -21,6 +23,7 @@
         var nextId = (currentId - 0 + 1 + {{file.length}}) % {{file.length}};
         current.classList.toggle('active');
         document.getElementById(nextId).classList.toggle('active');
+        document.getElementById(nextId).scrollIntoView();
     });
     socket.on('left press', function() {
         window.history.back();
@@ -32,10 +35,27 @@
     });
 </script>
 <style>
-    .active {
-        font-weight: bold;
+    body {
+        background-color: #F0F0F0;
     }
     a {
         display: block;
+        text-decoration: none;
+        color: black;
+    }
+    a:visited {
+        color: black;
+    }
+    .active {
+        font-weight: bold;
+        background-color: lightgray;
+    }
+    .file-item {
+        text-align: center;
+        font-size: 50px;
+    }
+    .ip-addr {
+        display: inline;
+        font-size: 25px;
     }
 </style>
